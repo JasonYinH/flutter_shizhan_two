@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 
+///电子书
+///https://book.flutterchina.club/chapter1/install_flutter.html#_1-3-2-ide%E9%85%8D%E7%BD%AE%E4%B8%8E%E4%BD%BF%E7%94%A8
+///文档注释用///  https://dart-lang.github.io/linter/lints/slash_for_doc_comments.html
+
 void main() {
   runApp(const MyApp());
 }
+//同上 单行函数简写
+// void main() =>runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -11,6 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      //应用名称
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
@@ -22,8 +29,10 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
+        // 蓝色主题颜色
         primarySwatch: Colors.blue,
       ),
+      // 应用首页路由
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
@@ -48,6 +57,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+//  记录点击按钮的总次数
   int _counter = 0;
 
   void _incrementCounter() {
@@ -96,7 +106,6 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-
               'You have pushed the button this many times:',
             ),
             Text(
@@ -107,7 +116,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: _incrementCounter, //接收一个回调函数，代表被点击后的处理器
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
