@@ -13,7 +13,30 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
+// This widget is the root of your application.
+// @override
+// Widget build(BuildContext context) {
+//   // TODO: implement build
+//   return  MaterialApp(
+//       title: 'StatelessWidget',
+//       theme: ThemeData(
+//           primarySwatch: Colors.blue
+//       ),
+//       home:  ContextRoute(),
+//   );
+// }
   // This widget is the root of your application.
+  // @override
+  // Widget build(BuildContext context) {
+  //   // TODO: implement build
+  //   return  MaterialApp(
+  //       title: 'StatelessWidget',
+  //       theme: ThemeData(
+  //           primarySwatch: Colors.blue
+  //       ),
+  //       home: const Echo(text: "Hello"),
+  //   );
+  // }
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -23,7 +46,7 @@ class MyApp extends StatelessWidget {
         // This is the theme of your application.
         //
         // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
+        // application has a blue toolbar. Then, witho ut quitting the app, try
         // changing the primarySwatch below to Colors.green and then invoke
         // "hot reload" (press "r" in the console where you ran "flutter run",
         // or simply save your changes to "hot reload" in a Flutter IDE).
@@ -120,6 +143,70 @@ class _MyHomePageState extends State<MyHomePage> {
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+}
+
+///演示State的生命周期
+
+class CounterWidget extends StatefulWidget {
+  const CounterWidget({Key? key, this.initValue = 0});
+
+  final int initValue;
+
+  @override
+  _CounterWidgetState createState() => _CounterWidgetState();
+}
+
+class _CounterWidgetState extends State<CounterWidget> {
+  int _counter = 0;
+  @override
+  void initState() {
+    super.initState();
+    //初始化状态
+    _counter=widget.initValue;
+    print("");
+
+  }
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    throw UnimplementedError();
+  }
+}
+
+class Echo extends StatelessWidget {
+  const Echo(
+      {Key? key, required this.text, this.backgroundColor = Colors.grey //默认为灰色
+      })
+      : super(key: key);
+
+  final String text;
+  final Color backgroundColor;
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+        child: Container(
+      color: backgroundColor,
+      child: Text(text),
+    ));
+  }
+}
+
+class ContextRoute extends StatelessWidget {
+  const ContextRoute({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Context测试"),
+      ),
+      body: Builder(builder: (context) {
+        Scaffold scaffold = context.findAncestorWidgetOfExactType<Scaffold>()!!;
+        return (scaffold.appBar as AppBar).title!!;
+      }),
     );
   }
 }
