@@ -54,11 +54,22 @@ Function makeAdder(int addBy){
 foo1(){}
 int a=0;
 int b=++a;
+String playerName(String? name) =>name??'嘎嘎';
+// 将其改为异步函数，返回值是 Future：
+Future<String> lookUpVersion() async=>'1.0.0';
+
 //定义一个函数
 void printInteger(int aNumber) {
   if (kDebugMode) {
+   print(lookUpVersion());
+//    级联运算符 (.., ?..) 可以让你在同一个对象上连续调用多个对象的变量或方法。
+    var paint=Paint()
+    ..color=Colors.blue
+    ..strokeCap=StrokeCap.round;
+
+    print(playerName(null));
     print('${a}__''$b');
-    if(a is int){
+    if(a is! int){
       print('对');
     }else{
       print('错');
